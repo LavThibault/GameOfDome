@@ -52,7 +52,7 @@ namespace DataAccessLayer
 
             using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
             {
-                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Character WHERE FisrtName = "+firstName+";", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Character WHERE FirstName = '"+firstName+"';", sqlConnection);
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
                 sqlDataAdapter.Fill(results);
             }
