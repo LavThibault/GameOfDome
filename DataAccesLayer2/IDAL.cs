@@ -12,5 +12,6 @@ namespace DataAccessLayer
         List<Territory> ReturnTerritories();
         List<Character> ReturnCharacters();
         Character ReturnCharacter(String firstName);
+        Boolean UpdateCharacter(int id, Character character);
     }
 }

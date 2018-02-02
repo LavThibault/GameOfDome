@@ -20,5 +20,10 @@ namespace BuisnessLayer
         {
             return DalManager.Instance.ReturnCharacter(firstName);
         }
+
+        public static Boolean UpdateCharacter(int id, Character character)
+        {
+            return DalManager.Instance.UpdateCharacter(id, character);
+        }
     }
 }

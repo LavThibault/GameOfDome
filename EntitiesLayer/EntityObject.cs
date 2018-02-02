@@ -9,7 +9,7 @@ namespace EntitiesLayer
     public abstract class EntityObject
     {
         private static int NumberOfObject { get; set; }
-        private int Id { get; set; }
+        public int Id { get; private set; }
 
 
         protected EntityObject()

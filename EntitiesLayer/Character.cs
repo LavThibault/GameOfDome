@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EntitiesLayer
 {
@@ -24,9 +21,11 @@ namespace EntitiesLayer
         }
 
         public Character() : base()
-        { }
+        {
+            
+        }
 
-            public Character(String fName, String lName, int Pv) : this()
+        public Character(String fName, String lName, int Pv) : this()
         {
             FirstName=fName;
             LastName = lName;
@@ -38,25 +37,11 @@ namespace EntitiesLayer
 
         public Character(String fName,String lName,int Pv ,int Bravoury,int Crazyness) : this(fName,lName,Pv)
         {
-        //    FirstName = fName;
-        //    LastName = lName;
-        //    this.Pv = Pv;
             this.Bravoury = Bravoury;
             this.Crazyness = Crazyness;
             Relationships = new Dictionary<string, Relationship>();
 
         }
-
-    /*    public Character(String fName, String lName, int Pv, int Bravoury, int Crazyness, CharacterType type) : base()
-        {
-            FirstName = fName;
-            LastName = lName;
-            this.Pv = Pv;
-            this.Bravoury = Bravoury;
-            this.Crazyness = Crazyness;
-            Relationships = new Dictionary<string, Relationship>();
-            Classe = type;
-        }*/
 
         public override String ToString()
         {

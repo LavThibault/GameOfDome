@@ -58,5 +58,10 @@ namespace DataAccessLayer
         {
             return access_manager.ReturnCharacter(firstName);
         }
+
+        public Boolean UpdateCharacter(int id, Character character)
+        {
+            return access_manager.UpdateCharacter(id,character);
+        }
     }
 }

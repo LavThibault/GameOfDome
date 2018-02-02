@@ -25,5 +25,11 @@ namespace MVCGoD.Models
             Bravoury = 0;
             Crazyness = 0;
         }
+
+        public CharacterModel(String fName, String lName, int Pv, int Bravoury, int Crazyness) : this(fName, lName, Pv)
+        {
+            this.Bravoury = Bravoury;
+            this.Crazyness = Crazyness;
+        }
     }
 }

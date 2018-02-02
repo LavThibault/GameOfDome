@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using EntitiesLayer;
 using BuisnessLayer;
+using System.Net.Http;
+using System.Net;
 
 namespace WebGoD.Controllers
 {
@@ -25,6 +24,20 @@ namespace WebGoD.Controllers
         {
             Character c = ThronesTournamentManager.ReturnCharacter(firstName);
             return c;
+        }
+
+        public HttpResponseMessage PutUpdateCharacter(int uid, Character character)
+        {
+            if(ThronesTournamentManager.UpdateCharacter(uid, character))
+            {
+                var response = new HttpResponseMessage();
+                response.Headers.Add("Message", "Successfuly Updated!");
+                return response;
+            }
+            else
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
         }
     }
 }
