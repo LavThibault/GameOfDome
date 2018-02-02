@@ -13,10 +13,13 @@ namespace MVCGoD.Controllers
 {
     public class CharacterController : Controller
     {
+
+        static IEnumerable<CharacterModel> characList = new List<CharacterModel>();
+        static int maxId=0;
+
         public async Task<ActionResult> Index()
         {
-            IEnumerable<CharacterModel> characList = new List<CharacterModel>();
-            
+            try {
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:54197");
@@ -29,11 +32,82 @@ namespace MVCGoD.Controllers
                 {
                     string temp = await response.Content.ReadAsStringAsync();
                     characList = JsonConvert.DeserializeObject<IEnumerable<CharacterModel>>(temp);
+                    maxId=((List<CharacterModel>)characList).Max(c => c.Id);
                 }
             }
-
+            }
+            catch(Exception e) { }
             return View(characList);
         }
+
+        public ActionResult Edit(int id)
+        {
+
+            return View(((List<CharacterModel>)characList).Find(c => id == c.Id));
+        }
+
+        public ActionResult Delete(int id)
+        {
+
+            return View(((List<CharacterModel>)characList).Find(c => id == c.Id));
+        }
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+                ((List<CharacterModel>)characList).Remove(((List<CharacterModel>)characList).Find(c => id == c.Id));
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Edit(int id, CharacterModel C)
+        {
+            try
+            {
+                ((List<CharacterModel>)characList).Remove(((List<CharacterModel>)characList).Find(c => id == c.Id));
+            ((List<CharacterModel>)characList).Add(C);
+            return RedirectToAction("Index");
+        }
+            catch
+            {
+                return View();
+    }
+}
+
+        public ActionResult Details(int id)
+        {
+
+            return View(((List<CharacterModel>)characList).Find(c => id == c.Id));
+        }
+        public ActionResult Create()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(CharacterModel C)
+        {
+            try
+            {
+                C.Id = maxId + 1;
+                maxId++;
+                ((List<CharacterModel>)characList).Add(C);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+
 
         public ActionResult About()
         {
