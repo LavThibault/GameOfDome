@@ -144,10 +144,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CharacterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HouseController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CharacterModel.cs" />
+    <Compile Include="Models\HouseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -192,6 +194,11 @@
     <Content Include="Views\Character\Details.cshtml" />
     <Content Include="Views\Character\Create.cshtml" />
     <Content Include="Views\Character\Delete.cshtml" />
+    <Content Include="Views\House\Index.cshtml" />
+    <Content Include="Views\House\Create.cshtml" />
+    <Content Include="Views\House\Details.cshtml" />
+    <Content Include="Views\House\Delete.cshtml" />
+    <Content Include="Views\House\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
