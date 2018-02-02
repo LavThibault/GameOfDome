@@ -14,11 +14,11 @@ namespace MVCGoD.Controllers
         static IEnumerable<HouseModel> houseList = new List<HouseModel>();
         static int maxId = 0;
 
-        static HouseModel getHouseById(int id)
+        public static HouseModel getHouseById(int id)
         {
             return ((List<HouseModel>)houseList).Find(h => id == h.Id);
         }
-        static IEnumerable<HouseModel> getHouses()
+        public static IEnumerable<HouseModel> getHouses()
         {
             return houseList;
         }

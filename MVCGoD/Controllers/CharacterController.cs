@@ -88,7 +88,13 @@ namespace MVCGoD.Controllers
         }
         public ActionResult Create()
         {
+            List<SelectListItem> items = new List<SelectListItem>();
+            foreach (HouseModel h in HouseController.getHouses())
+            {
+                items.Add(new SelectListItem { Text = h.Name, Value = ""+h.Id });
+            }
 
+            ViewBag.HouseList = items;
             return View();
         }
         [HttpPost]
@@ -97,6 +103,7 @@ namespace MVCGoD.Controllers
             try
             {
                 C.Id = maxId + 1;
+                C.House = HouseController.getHouseById(C.HouseId);
                 maxId++;
                 ((List<CharacterModel>)characList).Add(C);
                 return RedirectToAction("Index");

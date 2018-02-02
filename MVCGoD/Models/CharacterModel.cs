@@ -13,7 +13,8 @@ namespace MVCGoD.Models
         public int Pv { get; set; }
         public int Bravoury { get; set; }
         public int Crazyness { get; set; }
-
+        public int HouseId { get; set; }
+        public HouseModel House { get; set; }
         public CharacterModel() : base()
         { }
 
