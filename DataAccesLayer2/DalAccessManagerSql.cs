@@ -24,7 +24,7 @@ namespace DataAccessLayer
 
             foreach (DataRow row in results.Rows)
             {
-                characters.Add(new Character(row.Field<String>(3), row.Field<String>(4), row.Field<int>(1)));
+                characters.Add(new Character(row.Field<int>(0), row.Field<String>(3), row.Field<String>(4), row.Field<int>(1)));
                
             }
 
@@ -71,14 +71,14 @@ namespace DataAccessLayer
 
             using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
             {
-                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Character WHERE FirstName = '"+firstName+"';", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Character WHERE FirstName = '"+firstName+"'", sqlConnection);
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
                 sqlDataAdapter.Fill(results);
             }
 
             
             DataRow row = results.Rows[0];
-            character = new Character(row.Field<String>(3), row.Field<String>(4),row.Field<int>(1) );
+            character = new Character(row.Field<int>(0),row.Field<String>(3), row.Field<String>(4),row.Field<int>(1) );
 
             return character;
         }
@@ -87,15 +87,10 @@ namespace DataAccessLayer
         {
             using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
             {
-                try
-                {
-                    SqlCommand sqlCommand = new SqlCommand("UPDATE Character SET Bravoury = '" + character.Bravoury + "', Crazyness = '" + character.Crazyness + "', FirstName = '" + character.FirstName + "', LastName = '" + character.LastName + "', Classe = '" + character.Classe + "', Pv = '" + character.Pv + "';", sqlConnection);
-                    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
-                }
-                catch
-                {
-                    return false;
-                }
+                sqlConnection.Open();
+                SqlCommand sqlCommand = new SqlCommand("UPDATE Character SET Bravoury = " + character.Bravoury + ", Crazyness = " + character.Crazyness + ", FirstName = '" + character.FirstName + "', LastName = '" + character.LastName + "', Classe = '" + character.Classe + "', Pv = " + character.Pv + " WHERE Id = " + character.Id + ";", sqlConnection);
+                sqlCommand.ExecuteNonQuery();
+                sqlConnection.Close();
                 return true;
             }
         }

@@ -5,6 +5,7 @@ using EntitiesLayer;
 using BuisnessLayer;
 using System.Net.Http;
 using System.Net;
+using WebGoD.Models;
 
 namespace WebGoD.Controllers
 {
@@ -28,21 +29,22 @@ namespace WebGoD.Controllers
             Character c = ThronesTournamentManager.ReturnCharacter(firstName);
             return c;
         }
+        
 
-        //dabord creation de caracter puis set , donc numberOfObject incorrect
-        public HttpResponseMessage PutUpdateCharacter(int uid, Character character)
+        public HttpResponseMessage PutUpdateCharacter(int uid, CharacterDTO character)
         {
-            
-            if(ThronesTournamentManager.UpdateCharacter(uid, character))
-            {
-                var response = new HttpResponseMessage();
-                response.Headers.Add("Message", "Successfuly Updated!");
-                return response;
-            }
-            else
-            {
-                throw new HttpResponseException(HttpStatusCode.NotFound);
-            }
+            Character c = new Character(character.Id, character.FirstName, character.LastName, 2);
+                     if(ThronesTournamentManager.UpdateCharacter(uid, c))
+                     {
+                         var response = new HttpResponseMessage();
+                         response.Headers.Add("Message", "Successfuly Updated!");
+                         return response;
+                     }
+                     else
+                     {
+                         throw new HttpResponseException(HttpStatusCode.NotFound);
+                     }
+            //throw new HttpResponseException(HttpStatusCode.NotFound);
         }
     }
 }

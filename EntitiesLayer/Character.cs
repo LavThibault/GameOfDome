@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using MVCGoD.Models;
+
 
 namespace EntitiesLayer
 {
@@ -21,12 +21,17 @@ namespace EntitiesLayer
             Relationships.Add(caracName, value);
         }
 
-        public Character() : base()
+
+        public Character()
+        {
+
+        }
+        public Character(int id) : base(id)
         {
             
         }
 
-        public Character(String fName, String lName, int Pv) : this()
+        public Character(int id,String fName, String lName, int Pv) : this(id)
         {
             FirstName=fName;
             LastName = lName;
@@ -36,7 +41,7 @@ namespace EntitiesLayer
             Relationships = new Dictionary<string, Relationship>();
         }
 
-        public Character(String fName,String lName,int Pv ,int Bravoury,int Crazyness) : this(fName,lName,Pv)
+        public Character(int id,String fName,String lName,int Pv ,int Bravoury,int Crazyness) : this(id,fName,lName,Pv)
         {
             this.Bravoury = Bravoury;
             this.Crazyness = Crazyness;
@@ -44,10 +49,7 @@ namespace EntitiesLayer
 
         }
 
-        public Character(CharacterModel charmodel):this(charmodel.FirstName, charmodel.LastName, charmodel.Pv)
-        {
-
-        }
+     
 
         public override String ToString()
         {

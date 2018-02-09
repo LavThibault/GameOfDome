@@ -19,7 +19,7 @@ namespace EntitiesLayer
 
         protected EntityObject(int id)
         {
-           
+            Id = id;
             
 
         }
