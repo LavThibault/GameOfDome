@@ -42,7 +42,7 @@ namespace MVCGoD.Controllers
 
         public ActionResult Edit(int id)
         {
-
+            setHousesViewBag();
             return View(((List<CharacterModel>)characList).Find(c => id == c.Id));
         }
 
@@ -72,7 +72,8 @@ namespace MVCGoD.Controllers
             try
             {
                 ((List<CharacterModel>)characList).Remove(((List<CharacterModel>)characList).Find(c => id == c.Id));
-            ((List<CharacterModel>)characList).Add(C);
+                C.House = HouseController.getHouseById(int.Parse(C.HouseId));
+                ((List<CharacterModel>)characList).Add(C);
             return RedirectToAction("Index");
         }
             catch
@@ -88,22 +89,28 @@ namespace MVCGoD.Controllers
         }
         public ActionResult Create()
         {
+            setHousesViewBag();
+            return View();
+        }
+
+        private void setHousesViewBag()
+        {
             List<SelectListItem> items = new List<SelectListItem>();
             foreach (HouseModel h in HouseController.getHouses())
             {
-                items.Add(new SelectListItem { Text = h.Name, Value = ""+h.Id });
+                items.Add(new SelectListItem { Text = h.Name, Value = "" + h.Id });
             }
 
             ViewBag.HouseList = items;
-            return View();
         }
+
         [HttpPost]
         public ActionResult Create(CharacterModel C)
         {
             try
             {
                 C.Id = maxId + 1;
-                C.House = HouseController.getHouseById(C.HouseId);
+                C.House = HouseController.getHouseById(int.Parse(C.HouseId));
                 maxId++;
                 ((List<CharacterModel>)characList).Add(C);
                 return RedirectToAction("Index");
