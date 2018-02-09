@@ -13,5 +13,6 @@ namespace DataAccessLayer
         List<Character> ReturnCharacters();
         Character ReturnCharacter(String firstName);
         Boolean UpdateCharacter(int id, Character character);
+        int newId();
     }
 }

@@ -25,5 +25,10 @@ namespace BuisnessLayer
         {
             return DalManager.Instance.UpdateCharacter(id, character);
         }
+
+        public static int newId()
+        {
+            return DalManager.Instance.newId();
+        }
     }
 }

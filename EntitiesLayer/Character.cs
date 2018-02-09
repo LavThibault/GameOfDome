@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MVCGoD.Models;
 
 namespace EntitiesLayer
 {
@@ -40,6 +41,11 @@ namespace EntitiesLayer
             this.Bravoury = Bravoury;
             this.Crazyness = Crazyness;
             Relationships = new Dictionary<string, Relationship>();
+
+        }
+
+        public Character(CharacterModel charmodel):this(charmodel.FirstName, charmodel.LastName, charmodel.Pv)
+        {
 
         }
 

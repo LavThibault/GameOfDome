@@ -22,12 +22,17 @@ namespace WebGoD.Controllers
 
         public Character GetCharacter(String firstName)
         {
+     
+            int a = ThronesTournamentManager.newId();
+
             Character c = ThronesTournamentManager.ReturnCharacter(firstName);
             return c;
         }
 
+        //dabord creation de caracter puis set , donc numberOfObject incorrect
         public HttpResponseMessage PutUpdateCharacter(int uid, Character character)
         {
+            
             if(ThronesTournamentManager.UpdateCharacter(uid, character))
             {
                 var response = new HttpResponseMessage();

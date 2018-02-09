@@ -25,9 +25,28 @@ namespace DataAccessLayer
             foreach (DataRow row in results.Rows)
             {
                 characters.Add(new Character(row.Field<String>(3), row.Field<String>(4), row.Field<int>(1)));
+               
             }
 
             return characters;
+        }
+
+        public int newId()
+        {
+            DataTable results = new DataTable();
+            
+
+            using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
+            {
+                SqlCommand sqlCommand = new SqlCommand("SELECT MAX(Id) FROM Character;", sqlConnection);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                sqlDataAdapter.Fill(results);
+            }
+
+            return results.Rows[0].Field<int>(0)+1;
+
+           
+           
         }
 
         public List<House> ReturnHouses()

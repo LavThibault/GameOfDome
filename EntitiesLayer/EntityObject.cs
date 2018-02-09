@@ -14,8 +14,14 @@ namespace EntitiesLayer
 
         protected EntityObject()
         {
-            Id = NumberOfObject;
-            NumberOfObject++;
+          
+        }
+
+        protected EntityObject(int id)
+        {
+           
+            
+
         }
 
 

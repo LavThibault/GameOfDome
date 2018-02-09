@@ -51,6 +51,12 @@
     <Compile Include="TerritoryType.cs" />
     <Compile Include="War.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MVCGoD\MVCGoD.csproj">
+      <Project>{040847e5-b771-4f4f-af65-f0eaa2393edd}</Project>
+      <Name>MVCGoD</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

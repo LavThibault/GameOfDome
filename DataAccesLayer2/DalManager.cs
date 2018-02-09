@@ -63,5 +63,10 @@ namespace DataAccessLayer
         {
             return access_manager.UpdateCharacter(id,character);
         }
+
+        public int newId()
+        {
+            return access_manager.newId();
+        }
     }
 }
