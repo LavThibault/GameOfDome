@@ -31,6 +31,26 @@ namespace DataAccessLayer
             return characters;
         }
 
+        public List<House> ReturnHouses()
+        {
+            DataTable results = new DataTable();
+            List<House> houses = new List<House>();
+
+            using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
+            {
+                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM House;", sqlConnection);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                sqlDataAdapter.Fill(results);
+            }
+
+            foreach (DataRow row in results.Rows)
+            {
+                houses.Add(new House(row.Field<int>(0), row.Field<String>(1), row.Field<int>(2), row.Field<int>(3)));
+            }
+
+            return houses;
+        }
+
         public int newId()
         {
             DataTable results = new DataTable();
@@ -49,14 +69,23 @@ namespace DataAccessLayer
            
         }
 
-        public List<House> ReturnHouses()
+        public House ReturnHouse(int id)
         {
-            throw new NotImplementedException();
-        }
+            DataTable results = new DataTable();
+            House house;
 
-        public List<House> ReturnHouseWithMoreThanx(int x)
-        {
-            throw new NotImplementedException();
+            using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
+            {
+                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM House WHERE Id = " + id, sqlConnection);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                sqlDataAdapter.Fill(results);
+            }
+
+
+            DataRow row = results.Rows[0];
+            house = new House(row.Field<int>(0), row.Field<String>(1), row.Field<int>(2), row.Field<int>(3));
+
+            return house;
         }
 
         public List<Territory> ReturnTerritories()
@@ -64,14 +93,14 @@ namespace DataAccessLayer
             throw new NotImplementedException();
         }
 
-        public Character ReturnCharacter(String firstName)
+        public Character ReturnCharacter(int id)
         {
             DataTable results = new DataTable();
             Character character;
 
             using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
             {
-                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Character WHERE FirstName = '"+firstName+"'", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Character WHERE Id = "+id, sqlConnection);
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
                 sqlDataAdapter.Fill(results);
             }
@@ -93,6 +122,26 @@ namespace DataAccessLayer
                 sqlConnection.Close();
                 return true;
             }
+        }
+
+        public List<Character> returnCharactersFromHouse(int houseId, int maxValue)
+        {
+            DataTable results = new DataTable();
+            List<Character> characters = new List<Character>();
+
+            using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
+            {
+                SqlCommand sqlCommand = new SqlCommand("SELECT Character FROM CharacterFromHouse WHERE HOUSE="+houseId+";", sqlConnection);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                sqlDataAdapter.Fill(results);
+            }
+
+          foreach (DataRow row in results.Rows)
+            {
+                characters.Add(ReturnCharacter(row.Field<int>(0)));
+            }
+
+            return characters;
         }
     }
 }

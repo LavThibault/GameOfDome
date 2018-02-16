@@ -8,10 +8,11 @@ namespace DataAccessLayer
     interface IDal
     {
         List<House> ReturnHouses();
-        List<House> ReturnHouseWithMoreThanx(int x);
+        List<Character> returnCharactersFromHouse(int houseId, int maxValue);
+        House ReturnHouse(int id);
         List<Territory> ReturnTerritories();
         List<Character> ReturnCharacters();
-        Character ReturnCharacter(String firstName);
+        Character ReturnCharacter(int id);
         Boolean UpdateCharacter(int id, Character character);
         int newId();
     }

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 namespace EntitiesLayer
 {
-
     public class Character : EntityObject
     {
         public int Bravoury { get; set; }
@@ -21,11 +20,11 @@ namespace EntitiesLayer
             Relationships.Add(caracName, value);
         }
 
-
         public Character()
         {
 
         }
+
         public Character(int id) : base(id)
         {
             
@@ -49,14 +48,9 @@ namespace EntitiesLayer
 
         }
 
-     
-
         public override String ToString()
         {
             return "Je suis "+FirstName+" "+LastName;
         }
     }
-
-
-
 }

@@ -36,12 +36,12 @@ namespace DataAccessLayer
 
         public List<House> ReturnHouses()
         {
-            throw new NotImplementedException();
+            return access_manager.ReturnHouses();
         }
 
-        public List<House> ReturnHouseWithMoreThanx(int x)
+        public House ReturnHouse(int id)
         {
-            throw new NotImplementedException();
+            return access_manager.ReturnHouse(id);
         }
 
         public List<Territory> ReturnTerritories()
@@ -54,9 +54,9 @@ namespace DataAccessLayer
             return access_manager.ReturnCharacters();
         }
 
-        public Character ReturnCharacter(String firstName)
+        public Character ReturnCharacter(int id)
         {
-            return access_manager.ReturnCharacter(firstName);
+            return access_manager.ReturnCharacter(id);
         }
 
         public Boolean UpdateCharacter(int id, Character character)
@@ -67,6 +67,11 @@ namespace DataAccessLayer
         public int newId()
         {
             return access_manager.newId();
+        }
+
+        public List<Character> returnCharactersFromHouse(int houseId, int maxValue)
+        {
+            return access_manager.returnCharactersFromHouse(houseId, maxValue);
         }
     }
 }

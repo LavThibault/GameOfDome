@@ -10,7 +10,7 @@ namespace EntitiesLayer
     {
         private House Hof1 { get; set; }
         private House Hof2 { get; set; }
-        private House WinningHouse { get; set;}
+        private House WinningHouse { get; set; }
 
        public Fight(House h1,House h2) : base()
         {

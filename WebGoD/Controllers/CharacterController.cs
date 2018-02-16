@@ -21,12 +21,9 @@ namespace WebGoD.Controllers
             return l;
         }
 
-        public Character GetCharacter(String firstName)
+        public Character GetCharacter(int id)
         {
-     
-            int a = ThronesTournamentManager.newId();
-
-            Character c = ThronesTournamentManager.ReturnCharacter(firstName);
+            Character c = ThronesTournamentManager.ReturnCharacter(id);
             return c;
         }
         
@@ -34,17 +31,16 @@ namespace WebGoD.Controllers
         public HttpResponseMessage PutUpdateCharacter(int uid, CharacterDTO character)
         {
             Character c = new Character(character.Id, character.FirstName, character.LastName, 2);
-                     if(ThronesTournamentManager.UpdateCharacter(uid, c))
-                     {
-                         var response = new HttpResponseMessage();
-                         response.Headers.Add("Message", "Successfuly Updated!");
-                         return response;
-                     }
-                     else
-                     {
-                         throw new HttpResponseException(HttpStatusCode.NotFound);
-                     }
-            //throw new HttpResponseException(HttpStatusCode.NotFound);
+            if(ThronesTournamentManager.UpdateCharacter(uid, c))
+            {
+                var response = new HttpResponseMessage();
+                response.Headers.Add("Message", "Successfuly Updated!");
+                return response;
+            }
+            else
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
         }
     }
 }

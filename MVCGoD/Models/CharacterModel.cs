@@ -14,8 +14,9 @@ namespace MVCGoD.Models
         public int Bravoury { get; set; }
         public int Crazyness { get; set; }
 
-        public CharacterModel() : base()
-        { }
+        public CharacterModel()
+        {
+        }
 
         public CharacterModel(String fName, String lName, int Pv) : this()
         {
