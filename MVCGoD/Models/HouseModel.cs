@@ -29,10 +29,12 @@ namespace MVCGoD.Models
         {
             this.Gold = Gold;
             this.NumberOfUnities = numberOfUnities;
+            Housers = new List<CharacterModel>();
         }
 
         public HouseModel()
         {
+            Housers = new List<CharacterModel>();
         }
     }
 }

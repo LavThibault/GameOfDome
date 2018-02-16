@@ -98,9 +98,20 @@ namespace MVCGoD.Controllers
             }
         }
 
+        public ActionResult Play(int id)
+        {
+            return View(getHouseById(id));
+        }
+
+
         // GET: House/Delete/5
         public ActionResult Delete(int id)
         {
+            HouseModel h = getHouseById(id);
+            foreach (CharacterModel c in h.Housers)
+            {
+                c.House = null;
+            }
             return View(getHouseById(id));
         }
 

@@ -34,9 +34,67 @@
             @Html.DisplayFor(model => model.Gold)
         </dd>
 
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>
+                        FirstName
+                    </th>
+                    <th>
+                        LastName
+                    </th>
+                    <th>
+                        Pv
+                    </th>
+                    <th>
+                        Bravoury
+                    </th>
+                    <th>
+                        Crazyness
+                    </th>
+                    <th>
+                        House Name
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model.Housers)
+            {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pv)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Bravoury)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Crazyness)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.House.Name)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+</dd>
     </dl>
+
+
+       
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Play", "Play", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

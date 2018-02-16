@@ -56,8 +56,10 @@ namespace MVCGoD.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
-                ((List<CharacterModel>)characList).Remove(((List<CharacterModel>)characList).Find(c => id == c.Id));
+                CharacterModel C = ((List<CharacterModel>)characList).Find(c => id == c.Id);
+                 C.House.Housers.Remove(C);
+                ((List<CharacterModel>)characList).Remove(C);
+                
                 return RedirectToAction("Index");
             }
             catch
@@ -72,7 +74,9 @@ namespace MVCGoD.Controllers
             try
             {
                 ((List<CharacterModel>)characList).Remove(((List<CharacterModel>)characList).Find(c => id == c.Id));
+                C.House.Housers.Remove(C);
                 C.House = HouseController.getHouseById(int.Parse(C.HouseId));
+                C.House.Housers.Add(C);
                 ((List<CharacterModel>)characList).Add(C);
             return RedirectToAction("Index");
         }
@@ -111,6 +115,7 @@ namespace MVCGoD.Controllers
             {
                 C.Id = maxId + 1;
                 C.House = HouseController.getHouseById(int.Parse(C.HouseId));
+                C.House.Housers.Add(C);
                 maxId++;
                 ((List<CharacterModel>)characList).Add(C);
                 return RedirectToAction("Index");
