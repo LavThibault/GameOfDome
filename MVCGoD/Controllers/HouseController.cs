@@ -13,6 +13,7 @@ namespace MVCGoD.Controllers
 
         static IEnumerable<HouseModel> houseList = new List<HouseModel>();
         static int maxId = 0;
+        static int HouseId;
 
         public static HouseModel getHouseById(int id)
         {
@@ -100,6 +101,7 @@ namespace MVCGoD.Controllers
 
         public ActionResult Play(int id)
         {
+            HouseId = id;
             return View(getHouseById(id));
         }
 
@@ -129,6 +131,26 @@ namespace MVCGoD.Controllers
             {
                 return View();
             }
+        }
+
+
+        
+        public ActionResult Acheter(int argent)
+        {
+            HouseModel h = getHouseById(HouseId);
+            if (argent > 0 && h.Gold > argent)
+            {
+                h.Gold -= ((int) argent/5) *5;
+                h.NumberOfUnities += argent / 5;
+            }
+            if (argent < 0 && h.Gold>-argent)
+            {
+                h.Gold += argent;
+                h.Housers.Add(CharacterModel.HeroGenerator(HouseId));
+            }
+
+
+            return RedirectToAction("Play", new { id = HouseId });
         }
     }
 }
