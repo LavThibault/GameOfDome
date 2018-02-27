@@ -5,13 +5,13 @@ using System.Web;
 
 namespace WebGoD.Models
 {
-    public class CharacterDTO
+    public class CharacterDto
     {
         public int Id { get; set; }
         public String FirstName { get; set; }
         public String LastName { get; set; }
 
-        public CharacterDTO(int id,String firstName,String lastName)
+        public CharacterDto(int id,String firstName,String lastName)
         {
             Id = id;
             FirstName = firstName;

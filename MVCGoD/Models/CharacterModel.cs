@@ -18,19 +18,19 @@ namespace MVCGoD.Models
         {
         }
 
-        public CharacterModel(String fName, String lName, int Pv) : this()
+        public CharacterModel(String fName, String lName, int pv) : this()
         {
             FirstName = fName;
             LastName = lName;
-            this.Pv = Pv;
+            Pv = pv;
             Bravoury = 0;
             Crazyness = 0;
         }
 
-        public CharacterModel(String fName, String lName, int Pv, int Bravoury, int Crazyness) : this(fName, lName, Pv)
+        public CharacterModel(String fName, String lName, int pv, int bravoury, int crazyness) : this(fName, lName, pv)
         {
-            this.Bravoury = Bravoury;
-            this.Crazyness = Crazyness;
+            Bravoury = bravoury;
+            Crazyness = crazyness;
         }
     }
 }

@@ -8,8 +8,8 @@ namespace MVCGoD.Models
     public class HouseModel
     {
         public int Id { get; set; }
-        public String Name { get; private set; }
-        public int NumberOfUnities { get; private set; }
+        public String Name { get; set; }
+        public int NumberOfUnities { get; set; }
         public int Gold { get; set; }
 
         public HouseModel()

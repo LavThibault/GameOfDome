@@ -64,14 +64,44 @@ namespace DataAccessLayer
             return access_manager.UpdateCharacter(id,character);
         }
 
-        public int newId()
+        public int NewCharacterId()
         {
-            return access_manager.newId();
+            return access_manager.NewCharacterId();
         }
 
-        public List<Character> returnCharactersFromHouse(int houseId, int maxValue)
+        public int NewHouseId()
         {
-            return access_manager.returnCharactersFromHouse(houseId, maxValue);
+            return access_manager.NewHouseId();
+        }
+
+        public List<Character> returnCharactersFromHouse(int houseId)
+        {
+            return access_manager.returnCharactersFromHouse(houseId);
+        }
+
+        public bool UpdateHouse(int id, House house)
+        {
+            return access_manager.UpdateHouse(id, house);
+        }
+
+        public bool AddCharacter(Character character)
+        {
+            return access_manager.AddCharacter(character);
+        }
+
+        public bool DeleteCharacter(int id)
+        {
+            return access_manager.DeleteCharacter(id);
+        }
+
+        public bool AddHouse(House house)
+        {
+            return access_manager.AddHouse(house);
+        }
+
+        public bool DeleteHouse(int id)
+        {
+            return access_manager.DeleteHouse(id);
         }
     }
 }

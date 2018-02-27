@@ -46,13 +46,11 @@ namespace MVCGoD.Controllers
         //Called after clicking on "Edit"
         public ActionResult Edit(int id)
         {
-
             return View(((List<CharacterModel>)characList).Find(c => id == c.Id));
         }
 
         public ActionResult Delete(int id)
         {
-
             return View(((List<CharacterModel>)characList).Find(c => id == c.Id));
         }
         [HttpPost]
@@ -74,20 +72,20 @@ namespace MVCGoD.Controllers
         [HttpPost]
         public ActionResult Edit(int id, CharacterModel C)
         {
-            CharacterDTO t = new CharacterDTO(C.Id, C.FirstName,C.LastName);
+            CharacterDto t = new CharacterDto(C.Id, C.FirstName,C.LastName);
 
             try
             {
                 HttpResponseMessage responsePutMethod = ClientPutRequest(t);
                 return RedirectToAction("Index");
-        }
+            }
             catch
             {
                 return View();
-    }
-}
+            }
+        }
 
-        private HttpResponseMessage ClientPutRequest(CharacterDTO C)
+        private HttpResponseMessage ClientPutRequest(CharacterDto C)
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://localhost:54197/");
@@ -102,10 +100,7 @@ namespace MVCGoD.Controllers
         {
             return View(((List<CharacterModel>)characList).Find(c => id == c.Id));
         }
-        public ActionResult Create()
-        {
-            return View();
-        }
+
         [HttpPost]
         public ActionResult Create(CharacterModel C)
         {

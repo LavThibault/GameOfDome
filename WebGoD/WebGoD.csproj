@@ -88,11 +88,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CharacterController.cs" />
     <Compile Include="Controllers\HouseController.cs" />
+    <Compile Include="Controllers\WarController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CharacterDTO.cs" />
-    <Compile Include="Models\HouseDTO.cs" />
+    <Compile Include="Models\CharacterDto.cs" />
+    <Compile Include="Models\HouseDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

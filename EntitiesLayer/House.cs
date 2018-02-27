@@ -5,9 +5,9 @@ namespace EntitiesLayer
 {
     public class House : EntityObject
     {
-        private List<Character> Housers { get; set; }
-        public String Name { get; private set; }
-        public int NumberOfUnities { get; private set; }
+        public List<Character> Housers { get; set; }
+        public String Name { get; set; }
+        public int NumberOfUnities { get; set; }
         public int Gold { get; set; }
 
         public void AddHouser(Character c)
