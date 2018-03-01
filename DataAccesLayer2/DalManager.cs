@@ -103,5 +103,10 @@ namespace DataAccessLayer
         {
             return access_manager.DeleteHouse(id);
         }
+
+        public List<House> ReturnWinningHouse(int id)
+        {
+            return access_manager.ReturnWinningHouse(id);
+        }
     }
 }

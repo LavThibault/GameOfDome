@@ -21,5 +21,6 @@ namespace DataAccessLayer
         bool AddHouse(House house);
         int NewCharacterId();
         int NewHouseId();
+        List<House> ReturnWinningHouse(int id);
     }
 }

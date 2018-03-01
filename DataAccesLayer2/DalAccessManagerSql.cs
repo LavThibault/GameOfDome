@@ -213,5 +213,30 @@ namespace DataAccessLayer
                 return true;
             }
         }
+
+        public List<House> ReturnWinningHouse(int id)
+        {
+            DataTable results = new DataTable();
+            List<House> houses = new List<House>();
+
+            using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
+            {
+                SqlCommand sqlCommand = new SqlCommand("SELECT House1 FROM Fight WHERE Id = " + id, sqlConnection);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                sqlDataAdapter.Fill(results);
+
+                DataRow row1 = results.Rows[0];
+                houses.Add(new House(row1.Field<int>(0), row1.Field<String>(1), row1.Field<int>(2), row1.Field<int>(3)));
+
+                SqlCommand sqlCommand2 = new SqlCommand("SELECT House2 FROM Fight WHERE Id = " + id, sqlConnection);
+                SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(sqlCommand2);
+                sqlDataAdapter2.Fill(results);
+
+                DataRow row2 = results.Rows[0];
+                houses.Add(new House(row2.Field<int>(0), row2.Field<String>(1), row2.Field<int>(2), row2.Field<int>(3)));
+            }
+
+            return houses;
+        }
     }
 }

@@ -10,6 +10,9 @@ namespace BuisnessLayer
 {
     public static class ThronesTournamentManager
     {
+        static Dictionary<int,Fight> listOfCurrentFight = new Dictionary<int,Fight>();
+
+
         public static List<Character> ReturnCharacters()
         {
             return DalManager.Instance.ReturnCharacters();
@@ -73,6 +76,60 @@ namespace BuisnessLayer
         public static bool DeleteHouse(int id)
         {
             return DalManager.Instance.DeleteHouse(id);
+        }
+
+
+        public static Fight letsFight(int id)
+        {
+            try
+            {
+                listOfCurrentFight[id].roundFight();
+            
+            }
+            catch ( Exception e)
+            {
+                //NEED TO CHECK FOR THE RIGHT EXCEPTION OUT OF RANGE
+                List<House> tempList = ReturnHouses();
+
+                // IS NOT RANDOM FOR NOW 
+                int randomHouseID = tempList[0].Id;
+                if (randomHouseID == id)
+                {
+                    randomHouseID = tempList[1].Id;
+                }
+
+                listOfCurrentFight.Add(id, new Fight(ReturnHouse(id), ReturnHouse(randomHouseID)));
+                
+            }
+            return listOfCurrentFight[id];
+        }
+
+        public static Fight letsFightTwoHouse(int id,int id2)
+        {
+            try
+            {
+                listOfCurrentFight[id].roundFight();
+
+            }
+            catch (Exception e)
+            {
+                //NEED TO CHECK FOR THE RIGHT EXCEPTION OUT OF RANGE
+ 
+
+                listOfCurrentFight.Add(id, new Fight(ReturnHouse(id), ReturnHouse(id2)));
+
+            }
+            return listOfCurrentFight[id];
+        }
+        public static House ReturnWinningHouse(int id)
+        {
+            List<House> houses = DalManager.Instance.ReturnWinningHouse(id);
+            return LetsFight(houses[0], houses[1]);
+        }
+
+        public static House LetsFight(House h1, House h2)
+        {
+            return h1;
         }
     }
 }

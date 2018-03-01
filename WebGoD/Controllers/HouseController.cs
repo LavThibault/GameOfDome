@@ -15,6 +15,8 @@ namespace WebGoD.Controllers
         // GET: api/house
         public List<HouseDto> GetAllHouses()
         {
+            new HouseControllerUnitTest().test();
+
             List<HouseDto> l = new List<HouseDto>();
             foreach (House h in ThronesTournamentManager.ReturnHouses())
             {
