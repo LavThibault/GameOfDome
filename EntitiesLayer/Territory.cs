@@ -8,7 +8,6 @@ namespace EntitiesLayer
 {
     public class Territory
     {
-
         public TerritoryType TerritoryType { get; private set; }
         private House Owner { get; set; }
         public String Name { get; private set; }

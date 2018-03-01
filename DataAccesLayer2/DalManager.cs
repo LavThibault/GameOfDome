@@ -36,12 +36,12 @@ namespace DataAccessLayer
 
         public List<House> ReturnHouses()
         {
-            throw new NotImplementedException();
+            return access_manager.ReturnHouses();
         }
 
-        public List<House> ReturnHouseWithMoreThanx(int x)
+        public House ReturnHouse(int id)
         {
-            throw new NotImplementedException();
+            return access_manager.ReturnHouse(id);
         }
 
         public List<Territory> ReturnTerritories()
@@ -54,14 +54,59 @@ namespace DataAccessLayer
             return access_manager.ReturnCharacters();
         }
 
-        public Character ReturnCharacter(String firstName)
+        public Character ReturnCharacter(int id)
         {
-            return access_manager.ReturnCharacter(firstName);
+            return access_manager.ReturnCharacter(id);
         }
 
         public Boolean UpdateCharacter(int id, Character character)
         {
             return access_manager.UpdateCharacter(id,character);
+        }
+
+        public int NewCharacterId()
+        {
+            return access_manager.NewCharacterId();
+        }
+
+        public int NewHouseId()
+        {
+            return access_manager.NewHouseId();
+        }
+
+        public List<Character> returnCharactersFromHouse(int houseId)
+        {
+            return access_manager.returnCharactersFromHouse(houseId);
+        }
+
+        public bool UpdateHouse(int id, House house)
+        {
+            return access_manager.UpdateHouse(id, house);
+        }
+
+        public bool AddCharacter(Character character)
+        {
+            return access_manager.AddCharacter(character);
+        }
+
+        public bool DeleteCharacter(int id)
+        {
+            return access_manager.DeleteCharacter(id);
+        }
+
+        public bool AddHouse(House house)
+        {
+            return access_manager.AddHouse(house);
+        }
+
+        public bool DeleteHouse(int id)
+        {
+            return access_manager.DeleteHouse(id);
+        }
+
+        public List<House> ReturnWinningHouse(int id)
+        {
+            return access_manager.ReturnWinningHouse(id);
         }
     }
 }
