@@ -13,8 +13,37 @@ namespace MVCGoD.Controllers
 {
     public class HouseController : Controller
     {
+
         static IEnumerable<HouseModel> houseList = new List<HouseModel>();
         static int maxId = 0;
+        static int HouseId;
+
+        public static HouseModel getHouseById(int id)
+        {
+            return ((List<HouseModel>)houseList).Find(h => id == h.Id);
+        }
+        public static IEnumerable<HouseModel> getHouses()
+        {
+            return houseList;
+        }
+        static void editHouse(int id, HouseModel h)
+        {
+            deleteHouseById(id);
+            addHouse(h);
+        }
+        static void addHouse(HouseModel h)
+        {
+            h.Id = maxId + 1;
+            maxId++;
+            ((List<HouseModel>)houseList).Add(h);
+        }
+        static void deleteHouseById(int id)
+        {
+            ((List<HouseModel>)houseList).Remove(((List<HouseModel>)houseList).Find(c => id == c.Id));
+        }
+
+
+
 
         // GET: House
         public async Task<ActionResult> Index()
@@ -44,7 +73,7 @@ namespace MVCGoD.Controllers
         // GET: House/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(getHouseById(id));
         }
 
         // GET: House/Create
@@ -55,12 +84,11 @@ namespace MVCGoD.Controllers
 
         // POST: House/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(HouseModel house)
         {
             try
             {
-                // TODO: Add insert logic here
-
+                addHouse(house);
                 return RedirectToAction("Index");
             }
             catch
@@ -72,17 +100,16 @@ namespace MVCGoD.Controllers
         // GET: House/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(getHouseById(id));
         }
 
         // POST: House/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, HouseModel house)
         {
             try
             {
-                // TODO: Add update logic here
-
+                editHouse(id, house);
                 return RedirectToAction("Index");
             }
             catch
@@ -91,10 +118,17 @@ namespace MVCGoD.Controllers
             }
         }
 
+        public ActionResult Play(int id)
+        {
+            HouseId = id;
+            return View(getHouseById(id));
+        }
+
+
         // GET: House/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(getHouseById(id));
         }
 
         // POST: House/Delete/5
@@ -103,14 +137,31 @@ namespace MVCGoD.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
-
+                deleteHouseById(id);
                 return RedirectToAction("Index");
             }
             catch
             {
                 return View();
             }
+        }
+
+        public ActionResult Acheter(int argent)
+        {
+            HouseModel h = getHouseById(HouseId);
+            if (argent > 0 && h.Gold >= argent)
+            {
+                h.Gold -= ((int)argent / 5) * 5;
+                h.NumberOfUnities += argent / 5;
+            }
+            if (argent < 0 && h.Gold >= -argent)
+            {
+                h.Gold += argent;
+                h.Housers.Add(CharacterModel.HeroGenerator(HouseId));
+            }
+
+
+            return RedirectToAction("Play", new { id = HouseId });
         }
     }
 }

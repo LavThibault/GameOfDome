@@ -11,23 +11,30 @@ namespace MVCGoD.Models
         public String Name { get; set; }
         public int NumberOfUnities { get; set; }
         public int Gold { get; set; }
-
-        public HouseModel()
-        {
-        }
-
-        public HouseModel(String name):this()
-        {
-            Name = name;
-            NumberOfUnities = 0;
-        }
+        public List<CharacterModel> Housers { get; set; }
 
 
         public HouseModel(String name, int numberOfUnities, int gold) : this(name)
         {
             Gold = gold;
             NumberOfUnities = numberOfUnities;
+            Housers = new List<CharacterModel>();
         }
 
+
+
+        public HouseModel(String Name) : base()
+        {
+            this.Name = Name;
+            NumberOfUnities = 0;
+            Housers = new List<CharacterModel>();
+
+        }
+
+
+        public HouseModel()
+        {
+            Housers = new List<CharacterModel>();
+        }
     }
 }
