@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebGoD", "WebGoD\WebGoD.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCGoD", "MVCGoD\MVCGoD.csproj", "{040847E5-B771-4F4F-AF65-F0EAA2393EDD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp", "WpfApp\WpfApp.csproj", "{7C6B9EC8-18B3-4527-AEF8-C7E53834CE69}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{040847E5-B771-4F4F-AF65-F0EAA2393EDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{040847E5-B771-4F4F-AF65-F0EAA2393EDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{040847E5-B771-4F4F-AF65-F0EAA2393EDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C6B9EC8-18B3-4527-AEF8-C7E53834CE69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C6B9EC8-18B3-4527-AEF8-C7E53834CE69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C6B9EC8-18B3-4527-AEF8-C7E53834CE69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C6B9EC8-18B3-4527-AEF8-C7E53834CE69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

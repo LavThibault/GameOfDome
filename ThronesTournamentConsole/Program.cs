@@ -16,9 +16,8 @@ namespace ThronesTournamentConsole
             while (true)
             {
                 Console.WriteLine("-----------------------");
-                Console.WriteLine("A. afficher la liste des terrains");
-                Console.WriteLine("B. afficher la liste des maisons à plus de 200 unité");
-                Console.WriteLine("C. afficher la liste des maisons");
+                Console.WriteLine("A. afficher la liste des character");
+                Console.WriteLine("B. afficher la liste des maisons");
                 Console.WriteLine("-----------------------");
                 i = Console.ReadLine();
                
@@ -33,10 +32,10 @@ namespace ThronesTournamentConsole
                         }
                         break;
                     case "B":
-                        
-                        break;
-                    case "C":
-                        
+                        foreach (var item in ThronesTournamentManager.ReturnHouses())
+                        {
+                            Console.WriteLine(item);
+                        }
                         break;
                     default:
                         Console.WriteLine("passage par default");
