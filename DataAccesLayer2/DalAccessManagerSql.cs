@@ -151,7 +151,7 @@ namespace DataAccessLayer
             using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
             {
                 sqlConnection.Open();
-                SqlCommand sqlCommand = new SqlCommand("INSERT INTO Character (Id, Bravoury, Crazyness, FirstName, LastName, Classe, Pv) VALUES ( " + NewCharacterId() + ", " + character.Bravoury + ", " + character.Crazyness + ", '" + character.FirstName + "', '" + character.LastName + "', " + character.Classe + ", " + character.Pv + ");", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("INSERT INTO Character (Id, Bravoury, Crazyness, FirstName, LastName, Classe, Pv) VALUES ( " + NewCharacterId() + ", " + character.Bravoury + ", " + character.Crazyness + ", '" + character.FirstName + "', '" + character.LastName + "', '" + character.Classe + "', " + character.Pv + ");", sqlConnection);
                 sqlCommand.ExecuteNonQuery();
                 sqlConnection.Close();
                 return true;

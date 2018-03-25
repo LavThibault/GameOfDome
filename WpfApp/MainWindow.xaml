@@ -1,0 +1,18 @@
+﻿<Window x:Class="WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp"
+        mc:Ignorable="d"
+        xmlns:custom="clr-namespace:WpfApp"
+        Title="MainWindow" Height="350" Width="525">
+
+    <StackPanel Orientation="Horizontal" Height="50" Width="193">
+        <Button Click="Button_Click">Show Character list</Button>
+        <Button Click="Button_Click_1">Show House list</Button>
+    </StackPanel>
+    
+    
+
+</Window>

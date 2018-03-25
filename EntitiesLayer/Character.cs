@@ -34,7 +34,7 @@ namespace EntitiesLayer
         {
             FirstName=fName;
             LastName = lName;
-            this.Pv = Pv;
+            this.Pv = 2;
             Bravoury = 0;
             Crazyness = 0;
             Relationships = new Dictionary<string, Relationship>();

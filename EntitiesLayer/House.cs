@@ -34,5 +34,10 @@ namespace EntitiesLayer
             NumberOfUnities += unit;
         }
 
+        public override String ToString()
+        {
+            return "Je suis la maison " + Name;
+        }
+
     }
 }
