@@ -8,10 +8,11 @@
         xmlns:custom="clr-namespace:WpfApp"
         Title="MainWindow" Height="350" Width="525">
 
-
-    <StackPanel>
-        <custom:Home/>
+    <StackPanel Orientation="Horizontal" Height="50" Width="193">
+        <Button Click="Button_Click">Show Character list</Button>
+        <Button Click="Button_Click_1">Show House list</Button>
     </StackPanel>
-
+    
+    
 
 </Window>

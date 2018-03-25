@@ -33,6 +33,17 @@ namespace WpfApp
             InitializeComponent();
         }
 
-        
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            CharacManag win = new CharacManag();
+            win.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            HouseManag house = new HouseManag();
+            house.Show();
+            Close();
+        }
     }
 }

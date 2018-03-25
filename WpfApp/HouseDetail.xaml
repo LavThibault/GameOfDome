@@ -9,16 +9,16 @@
     <StackPanel>
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Nom de la maison : "></TextBlock>
-            <TextBlock Text="{Binding val1}"></TextBlock>
+            <TextBox Text="{Binding val1}" Width="200"></TextBox>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Gold : "></TextBlock>
-            <TextBlock Text="{Binding val2}"></TextBlock>
+            <TextBox Text="{Binding val2}" Width="200"></TextBox>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Nombre d'unités : "></TextBlock>
-            <TextBlock Text="{Binding val3}"></TextBlock>
+            <TextBox Text="{Binding val3}" Width="200"></TextBox>
         </StackPanel>
     </StackPanel>
 </UserControl>

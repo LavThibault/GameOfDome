@@ -39,6 +39,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -57,22 +58,34 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CharacManag.xaml.cs">
+      <DependentUpon>CharacManag.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CharacterDetail.xaml.cs">
       <DependentUpon>CharacterDetail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CharacterDto.cs" />
     <Compile Include="CharacterManagement.xaml.cs">
       <DependentUpon>CharacterManagement.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Home.xaml.cs">
-      <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
     <Compile Include="HouseDetail.xaml.cs">
       <DependentUpon>HouseDetail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HouseManag.xaml.cs">
+      <DependentUpon>HouseManag.xaml</DependentUpon>
+    </Compile>
     <Compile Include="viewModelTest.cs" />
+    <Compile Include="ViewModel\CharacterListViewModel.cs" />
+    <Compile Include="ViewModel\CharacterViewModel.cs" />
+    <Compile Include="ViewModel\ReyCommand.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="WindowCharacterDetail.xaml.cs">
       <DependentUpon>WindowCharacterDetail.xaml</DependentUpon>
     </Compile>
+    <Page Include="CharacManag.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CharacterDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -81,11 +94,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Home.xaml">
+    <Page Include="HouseDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="HouseDetail.xaml">
+    <Page Include="HouseManag.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -135,6 +148,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Forms\" />
+    <Folder Include="View\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,19 +13,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace WpfApp
 {
     /// <summary>
-    /// Logique d'interaction pour Home.xaml
+    /// Logique d'interaction pour CharacManag.xaml
     /// </summary>
-    public partial class Home : Page
+    public partial class CharacManag : Window
     {
-        public Home()
+        public CharacManag()
         {
             InitializeComponent();
+            WpfApp.ViewModel.CharacterListViewModel listViewMod = new ViewModel.CharacterListViewModel();
+            this.DataContext = listViewMod;
+        }
+
+        private void WindowLoaded()
+        {
+            WpfApp.ViewModel.CharacterListViewModel listViewMod = new ViewModel.CharacterListViewModel();
+            this.DataContext = listViewMod;
         }
 
         private System.Collections.ObjectModel.ObservableCollection<GeneralObservable> _liste;
@@ -61,13 +68,6 @@ namespace WpfApp
             }
             catch (Exception ex) { }
 
-
-
-
-
-
-
-
             listeAffichage.ItemsSource = _liste;
             listeAffichage.SelectedIndex = 0;
         }
@@ -85,46 +85,9 @@ namespace WpfApp
             w.Show();*/
         }
 
-        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            detailPane.Children.Clear();
-            HouseDetail cd = new HouseDetail();
-            detailPane.Children.Add(cd);
-
-            _liste = new System.Collections.ObjectModel.ObservableCollection<GeneralObservable>();
-            try
-            {
-                using (var client = new HttpClient())
-                {
-                    client.BaseAddress = new Uri("http://localhost:54197");
-                    client.DefaultRequestHeaders.Accept.Clear();
-                    client.DefaultRequestHeaders.Accept.Add(
-                        new MediaTypeWithQualityHeaderValue("application/json"));
-
-                    HttpResponseMessage response = await client.GetAsync("api/house");
-                    if (response.IsSuccessStatusCode)
-                    {
-                        string temp = await response.Content.ReadAsStringAsync();
-                        IEnumerable<HouseModel> characList = new List<HouseModel>();
-                        characList = JsonConvert.DeserializeObject<IEnumerable<HouseModel>>(temp);
-                        foreach (HouseModel item in characList)
-                        {
-                            _liste.Add(new GeneralObservable(item.Id, item.Name, item.Gold.ToString(), item.NumberOfUnities.ToString()));
-                        }
-                    }
-                }
-            }
-            catch (Exception ex) { }
-
-
-
-
-
-
-
-
-            listeAffichage.ItemsSource = _liste;
-            listeAffichage.SelectedIndex = 0;
+            Close();
         }
     }
 }
